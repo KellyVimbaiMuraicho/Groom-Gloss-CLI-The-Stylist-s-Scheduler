@@ -1,7 +1,7 @@
 Phase 1: Breaking Through the "Security Wall"
 When I started, I had the code, but Google wouldn’t let me in. I kept hitting Error 403, which felt like standing in front of a locked door without a key.
 
-To fix this, I had to become my own "Security Administrator" in the Google Cloud Console. I created a project, downloaded my Passport (credentials.json), and—the most important part—I added my email as a Test User. This told Google that even though my app wasn't "verified" for the public yet, it was safe for me to use. Once I logged in through the browser, the code generated token.pickle, my Digital Keycard, which now lets me bypass the login screen every time I run the app.
+To fix this, I had to become my own "Security Administrator" in the Google Cloud Console. I created a project, downloaded my Passport (credentials.json), and the most important part,I added my email as a Test User. This told Google that even though my app wasn't "verified" for the public yet, it was safe for me to use. Once I logged in through the browser, the code generated token.pickle, my Digital Keycard, which now lets me bypass the login screen every time I run the app.
 
 Phase 2: Connecting the "Waiter" (The API)
 I realized that the Google Calendar API is like a waiter in a restaurant. I don't go into Google's "kitchen" to move data myself; instead, I wrote functions that give the waiter specific orders.
@@ -26,3 +26,5 @@ My salon.py is my "Voice": It’s the interface where I type my commands. It cap
 My salon_engine.py is my "Brain": It holds my Salon ID and all the logic for talking to Google. It handles the security, the viewing, the booking, and the syncing.
 
 I have now successfully built a professional-grade booking system that handles authentication, cloud storage, and real-time synchronization.
+
+Lastly I had security issues when i was trying to push my project to git hub, this was mainly because of  the files with secrets i was sharing , I had to git restage and uncommit my commits then i created a .git ignore file to hide the important infor, then finally project was pushed successfuly to github.
