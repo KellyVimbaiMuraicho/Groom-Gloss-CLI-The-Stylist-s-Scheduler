@@ -1,3 +1,28 @@
+🛠 Prerequisites & Installation
+To run this project, I used two primary Google libraries to bridge the gap between my Python logic and the Google Cloud.
+
+1. Dependencies
+You must install the following libraries to handle authentication and communication:
+
+Bash
+
+pip install google-auth-oauthlib google-api-python-client
+
+2. What these libraries handle:
+google-auth-oauthlib: This is the Security Layer. It manages the OAuth 2.0 flow, allowing the app to safely request access to your calendar. It handles the "handshake" between your local machine and Google’s identity server to generate your token.pickle.
+
+google-api-python-client: This is the Communication Layer. It acts as a translator, converting our Python functions into specific API calls that Google’s servers can process. It’s what allows the CLI to "talk" to the Salon Calendar to create, update, or delete events.
+
+🏗 How it Works (Under the Hood)
+The project follows a Client-Server architecture via the API:
+
+Authentication: The app uses google-auth-oauthlib to verify my credentials.json.
+
+Request: When a booking is made, google-api-python-client sends a "patch" request to the specific Salon Calendar ID.
+
+Synchronization: By adding the client's email as an Attendee, the API triggers a native Google sync, pushing the appointment directly to the client's personal device.
+
+
 Phase 1: Breaking Through the "Security Wall"
 When I started, I had the code, but Google wouldn’t let me in. I kept hitting Error 403, which felt like standing in front of a locked door without a key.
 
@@ -6,7 +31,7 @@ To fix this, I had to become my own "Security Administrator" in the Google Cloud
 Phase 2: Connecting the "Waiter" (The API)
 I realized that the Google Calendar API is like a waiter in a restaurant. I don't go into Google's "kitchen" to move data myself; instead, I wrote functions that give the waiter specific orders.
 
-At first, my waiter was only looking at my Primary Calendar. I could see my personal life, but not my business slots. To fix this, I went into Google Calendar and created a brand new Salon Calendar. I found its unique "Address"— the Calendar ID—and pasted it into my code. Now, when I tell my script to "View," the API knows exactly which "Sign-up Sheet" to look at.
+At first, my waiter was only looking at my Primary Calendar. I could see my personal life, but not my business slots. To fix this, I went into Google Calendar and created a brand new Salon Calendar. I found its unique "Address"(the Calendar ID)and pasted it into my code. Now, when I tell my script to "View," the API knows exactly which "Sign-up Sheet" to look at.
 
 Phase 3: Creating the "Sync" Magic
 The coolest part for me was figuring out how to make an appointment show up on two calendars at once. I didn't want to write code that copied the event; I wanted it to be a Live Connection.

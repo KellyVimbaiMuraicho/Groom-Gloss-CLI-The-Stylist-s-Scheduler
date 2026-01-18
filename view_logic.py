@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-
+hairdresser_calender_ID = 'b602c310b120403069e78e1cc2c9a9212f6dd7f1c7b5fda480211f23994f2e1f@group.calendar.google.com'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 def get_calendar_service():
@@ -40,7 +40,7 @@ def get_upcoming_events(service):
     print(f"DEBUG: Fetching events starting from {now}...")
     
     events_result = service.events().list(
-        calendarId='primary', 
+        calendarId= hairdresser_calender_ID,
         timeMin=now,
         maxResults=10, 
         singleEvents=True,
@@ -49,7 +49,7 @@ def get_upcoming_events(service):
     
     return events_result.get('items', [])
 
-def is_busy(service, start_time, end_time, cal_id='primary'):
+def is_busy(service, start_time, end_time, cal_id=hairdresser_calender_ID):
     """Checks for double-booking conflicts."""
     events_result = service.events().list(
         calendarId=cal_id,
@@ -62,7 +62,7 @@ def is_busy(service, start_time, end_time, cal_id='primary'):
 def book_appointment(service, event_id, client_email, service_note):
     """Links a client to an existing available slot."""
     
-    event = service.events().get(calendarId='primary', eventId=event_id).execute()
+    event = service.events().get(calendarId=hairdresser_calender_ID, eventId=event_id).execute()
     
     
     if event.get('attendees'):
@@ -75,12 +75,12 @@ def book_appointment(service, event_id, client_email, service_note):
     event['summary'] = f"Salon Booking: {service_note}"
     event['attendees'] = [{'email': client_email}]
     
-    service.events().update(calendarId='primary', eventId=event_id, body=event).execute()
+    service.events().update(calendarId=hairdresser_calender_ID, eventId=event_id, body=event).execute()
     return {"success": True, "message": "Successfully booked and synced to your calendar!"}
 
 def cancel_appointment(service, event_id, client_email):
     """Removes a client from a booking and resets the slot."""
-    event = service.events().get(calendarId='primary', eventId=event_id).execute()
+    event = service.events().get(calendarId=hairdresser_calender_ID, eventId=event_id).execute()
     attendees = event.get('attendees', [])
     
     if not any(a['email'] == client_email for a in attendees):
@@ -89,5 +89,5 @@ def cancel_appointment(service, event_id, client_email):
     event['summary'] = "Available Salon Slot"
     event['attendees'] = []
     
-    service.events().update(calendarId='primary', eventId=event_id, body=event).execute()
+    service.events().update(calendarId=hairdresser_calender_ID, eventId=event_id, body=event).execute()
     return {"success": True, "message": "Booking successfully cancelled."}
