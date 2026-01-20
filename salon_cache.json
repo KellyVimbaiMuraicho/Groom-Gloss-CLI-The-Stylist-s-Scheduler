@@ -1,0 +1,51 @@
+{
+    "last_sync": "2026-01-20",
+    "events": [
+        {
+            "id": "11uigdijv054radmo9courfbif",
+            "summary": "Busy",
+            "start": "2026-01-20",
+            "source": "Clinic",
+            "attendees": []
+        },
+        {
+            "id": "6v2rr2pg2mbsm9ainenc1qh7hg",
+            "summary": "Available",
+            "start": "2026-01-22",
+            "source": "Clinic",
+            "attendees": []
+        },
+        {
+            "id": "4tlt0rtkijqbkjfmldpbad8id1",
+            "summary": "No Title",
+            "start": "2026-01-20T20:00:00+02:00",
+            "source": "Clinic",
+            "attendees": []
+        },
+        {
+            "id": "0ecv0a87ktfhlmrq8laagresfl",
+            "summary": "No Title",
+            "start": "2026-01-22T19:45:00+02:00",
+            "source": "Clinic",
+            "attendees": []
+        },
+        {
+            "id": "7rmnuu14jn3nqf6705g4g6vdjg",
+            "summary": "Clinic: functions",
+            "start": "2026-01-20T12:30:00+02:00",
+            "source": "Clinic",
+            "attendees": [
+                "siviljhb025@student.wethinkcode.co.za"
+            ]
+        },
+        {
+            "id": "b2bo4qvcspqjrmugdb5nd4k5p8",
+            "summary": "Volunteer: kemurjhb025@wethinkcode.co.za",
+            "start": "2026-01-20T15:00:00+02:00",
+            "source": "Clinic",
+            "attendees": [
+                "kemurjhb025@wethinkcode.co.za"
+            ]
+        }
+    ]
+}
